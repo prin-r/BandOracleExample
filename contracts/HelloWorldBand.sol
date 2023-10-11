@@ -15,18 +15,17 @@ interface IFutureBridge {
         bytes result;
     }
 
-	function verify(address rAddress, uint256 s, bytes32 messageHash) external view returns (bool);
+    function verify(address rAddress, uint256 s, bytes32 messageHash) external view returns (bool);
 }
 
 contract HelloWorldBand {
-
-    struct Result {
+	struct Result {
 		string text;
 	}
 
-    uint64 public constant ansCount = 1;
+	uint64 public constant ansCount = 1;
 	uint64 public constant oracleScriptID = 3;
-    IFutureBridge public bridge;
+	IFutureBridge public bridge;
 	string public text;
 
 	constructor(IFutureBridge _bridge) {
@@ -41,11 +40,11 @@ contract HelloWorldBand {
 
 		IFutureBridge.Result memory r = abi.decode(data, (IFutureBridge.Result));
 
-        require(r.resolveStatus == 1,"feedPrices: Request not successfully resolved");
+		require(r.resolveStatus == 1,"feedPrices: Request not successfully resolved");
 		require(r.oracleScriptID == oracleScriptID, "feedPrices: Oracle Script ID not match");
 		require(r.ansCount >= ansCount, "feedPrices: Ask Count not >=");
 
 		Result memory result = abi.decode(r.result, (Result));
-        text = result.text;
+        	text = result.text;
 	}
 }
