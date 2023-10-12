@@ -9,6 +9,11 @@ Deployed oracle script on the hackathon testnet [O3](https://laozi-hackathon.cos
 
 The oracle script in Band's Oracle architecture plays a role in acquiring non-deterministic raw data from data sources and then aggregating it deterministically, similar to how a smart contract is executed on the blockchain. Our Oracle Script, named `hello_world_os`, stands as a minimal demonstration of this dynamic, illustrating how data obtained from our `hello_world_ds` data source is aggregated and processed.
 
+## Hello World Schema
+```
+{word:string}/{result:string}
+```
+
 ## File Descriptions:
 
 - **Cargo.toml**:
